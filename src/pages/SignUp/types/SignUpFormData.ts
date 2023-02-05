@@ -1,7 +1,4 @@
-export interface SignInFormData {
-  email: string;
-  password: string;
-}
+import { SignInFormData } from "../../SignIn/types/SignInFormData";
 
 export interface SignUpFormData extends SignInFormData {
   firstName?: string;

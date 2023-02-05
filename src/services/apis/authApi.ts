@@ -1,5 +1,5 @@
 
-import { SignInFormData, SignUpFormData } from '../../pages/SignUp/types/SignInFormData'
+import { SignInFormData, SignUpFormData } from '../../pages/SignUp/types/SignUpFormData'
 import { UserState } from '../types'
 import { apiSlice } from './baseApi'
 

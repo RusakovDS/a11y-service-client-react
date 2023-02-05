@@ -4,11 +4,12 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import FormValidationError from "../../../components/FormValidationError";
 import Spinner from "../../../components/Spinner";
-import { SignUpFormData } from "../types/SignInFormData";
+import { SignUpFormData } from "../types/SignUpFormData";
 
 interface Props {
   isLoading: boolean;
-  serverError?: FetchBaseQueryError | SerializedError | undefined;
+  // smells
+  serverError?: FetchBaseQueryError | SerializedError
   onSignUp: (data: SignUpFormData) => Promise<void>;
 }
 
@@ -107,7 +108,7 @@ const RegisterForm: React.FC<Props> = ({
             <FormValidationError message={errors.password.message} />
           )}
         </div>
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex">
           <button
             type="submit"
             className="flex-1 inline-flex justify-center items-center rounded-md bg-blue-500 px-4 py-2 text-center text-white transition hover:bg-blue-600 disabled:bg-blue-300"
@@ -116,7 +117,6 @@ const RegisterForm: React.FC<Props> = ({
             {isLoading && <Spinner />}
             <span>Continue</span>
           </button>
-          <a href="#">Forgot your password?</a>
         </div>
       </form>
       {serverError && "data" in serverError && (

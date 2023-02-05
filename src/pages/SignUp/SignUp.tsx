@@ -4,7 +4,7 @@ import { useSignUpMutation } from "../../services/apis/authApi";
 import { setCredentials } from "../../services/slices/authSlice";
 import { useAppDispatch } from "../../services/store";
 import RegisterForm from "./components/RegisterForm";
-import { SignUpFormData } from "./types/SignInFormData";
+import { SignUpFormData } from "./types/SignUpFormData";
 
 const SignUp = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +25,7 @@ const SignUp = () => {
             Lorem ipsum dolor sit amet
           </h1>
           <div className="flex gap-2">
-            <FontAwesomeIcon icon={faCheckCircle} size="2x" />
+            <FontAwesomeIcon icon={faCheckCircle} size="2x" className=" text-sky-500"/>
             <div>
               <h2 className="font-headings text-3xl font-bold">
                 Lorem ipsum dolor sit amet consectetur
@@ -34,7 +34,7 @@ const SignUp = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
                 tempore ratione voluptatem sequi deserunt repellat veniam
                 commodi qui! Dolor perspiciatis exercitationem, totam error
-                minima incidunt facilis excepturi animi eaque repellat.{" "}
+                minima incidunt facilis excepturi animi eaque repellat.
               </p>
             </div>
           </div>
@@ -48,7 +48,7 @@ const SignUp = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
                 tempore ratione voluptatem sequi deserunt repellat veniam
                 commodi qui! Dolor perspiciatis exercitationem, totam error
-                minima incidunt facilis excepturi animi eaque repellat.{" "}
+                minima incidunt facilis excepturi animi eaque repellat.
               </p>
             </div>
           </div>
@@ -62,7 +62,7 @@ const SignUp = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
                 tempore ratione voluptatem sequi deserunt repellat veniam
                 commodi qui! Dolor perspiciatis exercitationem, totam error
-                minima incidunt facilis excepturi animi eaque repellat.{" "}
+                minima incidunt facilis excepturi animi eaque repellat.
               </p>
             </div>
           </div>
