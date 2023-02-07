@@ -25,7 +25,7 @@ const SignUp = () => {
             Lorem ipsum dolor sit amet
           </h1>
           <div className="flex gap-2">
-            <FontAwesomeIcon icon={faCheckCircle} size="2x" className=" text-sky-500"/>
+            <FontAwesomeIcon icon={faCheckCircle} size="2x" className=" text-blue-500"/>
             <div>
               <h2 className="font-headings text-3xl font-bold">
                 Lorem ipsum dolor sit amet consectetur
@@ -39,7 +39,7 @@ const SignUp = () => {
             </div>
           </div>
           <div className="flex gap-2">
-            <FontAwesomeIcon icon={faCheckCircle} size="2x" />
+            <FontAwesomeIcon icon={faCheckCircle} size="2x" className=" text-blue-500"/>
             <div>
               <h2 className="font-headings text-3xl font-bold">
                 Lorem ipsum dolor sit amet consectetur
@@ -53,7 +53,7 @@ const SignUp = () => {
             </div>
           </div>
           <div className="flex gap-2">
-            <FontAwesomeIcon icon={faCheckCircle} size="2x" />
+            <FontAwesomeIcon icon={faCheckCircle} size="2x"  className=" text-blue-500"/>
             <div>
               <h2 className="font-headings text-3xl font-bold">
                 Lorem ipsum dolor sit amet consectetur

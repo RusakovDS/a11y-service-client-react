@@ -6,6 +6,7 @@ const API_URL = "http://localhost:5000";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: API_URL,
+  credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
     if (token) {

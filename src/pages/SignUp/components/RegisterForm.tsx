@@ -1,15 +1,17 @@
+import { Transition } from "@headlessui/react";
 import { SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import FormValidationError from "../../../components/FormValidationError";
+import HorizontalLine from "../../../components/HorizontalLine";
 import Spinner from "../../../components/Spinner";
 import { SignUpFormData } from "../types/SignUpFormData";
 
 interface Props {
   isLoading: boolean;
   // smells
-  serverError?: FetchBaseQueryError | SerializedError
+  serverError?: FetchBaseQueryError | SerializedError;
   onSignUp: (data: SignUpFormData) => Promise<void>;
 }
 
@@ -33,7 +35,7 @@ const RegisterForm: React.FC<Props> = ({
       <h1 className="text-center font-headings text-3xl font-bold">
         Join to get our world more accessible!
       </h1>
-      <form className='max-w-[480px]'onSubmit={handleSubmit(onSubmit)}>
+      <form className="max-w-[480px]" onSubmit={handleSubmit(onSubmit)}>
         <div className="h-[86px]">
           <label className="sr-only" htmlFor="email">
             Email
@@ -47,9 +49,10 @@ const RegisterForm: React.FC<Props> = ({
             type="text"
             {...register("email", { required: "Email is required." })}
           />
-          {errors.email?.type === "required" && (
-            <FormValidationError message={errors.email.message} />
-          )}
+          <FormValidationError
+            isShowing={errors.email?.type === "required"}
+            message={errors.email?.message}
+          />
         </div>
         <div className="flex items-center gap-2">
           <div className="h-[86px]">
@@ -67,9 +70,10 @@ const RegisterForm: React.FC<Props> = ({
                 required: "First name is required.",
               })}
             />
-            {errors.firstName?.type === "required" && (
-              <FormValidationError message={errors.firstName.message} />
-            )}
+            <FormValidationError
+              isShowing={errors.firstName?.type === "required"}
+              message={errors.firstName?.message}
+            />
           </div>
           <div className="h-[86px]">
             <label className="sr-only" htmlFor="lastName">
@@ -86,9 +90,10 @@ const RegisterForm: React.FC<Props> = ({
                 required: "Last name is required.",
               })}
             />
-            {errors.lastName?.type === "required" && (
-              <FormValidationError message={errors.lastName.message} />
-            )}
+            <FormValidationError
+              isShowing={errors.lastName?.type === "required"}
+              message={errors.lastName?.message}
+            />
           </div>
         </div>
         <div className="h-[86px]">
@@ -104,14 +109,15 @@ const RegisterForm: React.FC<Props> = ({
             type="password"
             {...register("password", { required: "Password is required." })}
           />
-          {errors.password?.type === "required" && (
-            <FormValidationError message={errors.password.message} />
-          )}
+          <FormValidationError
+            isShowing={errors.password?.type === "required"}
+            message={errors.password?.message}
+          />
         </div>
         <div className="flex">
           <button
             type="submit"
-            className="flex-1 inline-flex justify-center items-center rounded-md bg-blue-500 px-4 py-2 text-center text-white transition hover:bg-blue-600 disabled:bg-blue-300"
+            className="inline-flex flex-1 items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-center text-white transition hover:bg-blue-600 disabled:bg-blue-300"
             disabled={isLoading}
           >
             {isLoading && <Spinner />}
@@ -119,15 +125,16 @@ const RegisterForm: React.FC<Props> = ({
           </button>
         </div>
       </form>
-      {serverError && "data" in serverError && (
-        <FormValidationError message={serverError?.data?.message} />
-      )}
-      <hr className="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700"></hr>
+      <FormValidationError
+        isShowing={typeof serverError !== "undefined" && "data" in serverError}
+        message={typeof serverError !== "undefined" ? serverError.data.message : ''}
+      />
+      <HorizontalLine />
       <p>
-        Already have an account?{" "}
+        Already have an account?
         <Link
           to="/signin"
-          className="text-blue-600 hover:underline dark:text-blue-500"
+          className="font-semibold text-blue-600 hover:underline dark:text-blue-500"
         >
           Log in
         </Link>

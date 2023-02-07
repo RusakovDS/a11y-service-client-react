@@ -1,7 +1,9 @@
 import { SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Link } from "react-router-dom";
 import FormValidationError from "../../../components/FormValidationError";
+import HorizontalLine from "../../../components/HorizontalLine";
 import Spinner from "../../../components/Spinner";
 import { SignInFormData } from "../types/SignInFormData";
 
@@ -41,9 +43,10 @@ const LoginForm: React.FC<Props> = ({ isLoading, serverError, onSignIn }) => {
             type="text"
             {...register("email", { required: "Email is required." })}
           />
-          {errors.email?.type === "required" && (
-            <FormValidationError message={errors.email.message} />
-          )}
+          <FormValidationError
+            isShowing={errors.email?.type === "required"}
+            message={errors.email?.message}
+          />
         </div>
         <div className="h-[86px]">
           <label className="sr-only" htmlFor="email">
@@ -58,9 +61,10 @@ const LoginForm: React.FC<Props> = ({ isLoading, serverError, onSignIn }) => {
             type="password"
             {...register("password", { required: "Password is required." })}
           />
-          {errors.password?.type === "required" && (
-            <FormValidationError message={errors.password.message} />
-          )}
+          <FormValidationError
+            isShowing={errors.password?.type === "required"}
+            message={errors.password?.message}
+          />
         </div>
         <div className="flex items-center justify-between">
           <button
@@ -74,9 +78,21 @@ const LoginForm: React.FC<Props> = ({ isLoading, serverError, onSignIn }) => {
           <a href="#">Forgot your password?</a>
         </div>
       </form>
-      {serverError && "data" in serverError && (
-        <FormValidationError message={serverError?.data?.message} />
-      )}
+      <FormValidationError
+        isShowing={typeof serverError !== "undefined" && "data" in serverError}
+        message={typeof serverError !== "undefined" ? serverError.data.message : ''}
+      />
+      <HorizontalLine />
+      <div>
+        Don't have an account yet?  
+        <Link
+          to="/signup"
+          className="text-blue-600 font-semibold hover:underline dark:text-blue-500"
+
+        >
+          Sign Up
+        </Link>
+      </div>
     </div>
   );
 };
