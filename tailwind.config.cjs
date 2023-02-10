@@ -9,6 +9,9 @@ module.exports = {
         headings: ['Merriweather', 'sans'],
         sans: ['Cabin', 'sans'],
       },
+      gridTemplateRows: {
+        layout: '64px 1fr 64px'
+      }
     },
   },
   plugins: [],
